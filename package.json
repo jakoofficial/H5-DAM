@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --check .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"start": "node src/lib/DB/dbConn.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",
@@ -28,6 +29,7 @@
 		"@capacitor/android": "^8.0.2",
 		"@capacitor/cli": "^7.4.5",
 		"@capacitor/core": "^8.0.2",
-		"@sveltejs/adapter-static": "^3.0.10"
+		"@sveltejs/adapter-static": "^3.0.10",
+		"sqlite3": "^5.1.7"
 	}
 }
