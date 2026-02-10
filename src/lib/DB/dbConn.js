@@ -5,7 +5,9 @@ const db = new sqlite3.Database("src/lib/DB/database.db");
 
 const COMDS = {
     "GetAllData":"SELECT * FROM Groups",
-    "AddNewGroup":"INSERT INTO Groups(GroupName) Values(?)"
+    "AddNewGroup":"INSERT INTO Groups(GroupName) Values(?)",
+    "RemoveGroup":"DELETE FROM Groups WHERE GroupID=?",
+    "UpdateGroup":`UPDATE Groups SET GroupName=? WHERE GroupID=?`,
 }
 
 // @ts-ignore
@@ -32,34 +34,24 @@ const getFirst = async (db, sql, params) => {
 };
 
 // @ts-ignore
-const addNew = async (db, sql, params = []) => {
-  if (params && params.length > 0) {
-    return new Promise((resolve, reject) => {
-// @ts-ignore
-      db.run(sql, params, (err) => {
-        if (err) reject(err);
-        // @ts-ignore
-        resolve();
-      });
-    });
-  }
+const query = async (db, sql, params = []) => {
   return new Promise((resolve, reject) => {
+    // @ts-ignore
+    db.run(sql, params, (err) => {
+      if (err) {
+        reject(new Error("ERR: "+err+"\nUsing SQL: "+sql+"\nParams: "+params));
+      } else {
 // @ts-ignore
-    db.exec(sql, (err) => {
-      if (err) reject(err);
-      // @ts-ignore
-      resolve();
+        resolve();
+      }
     });
   });
 };
 
-
 // @ts-ignore
 let recievedData = [];
-let sql = COMDS.GetAllData;
 
-// await addNew(db, "INSERT INTO Groups(Field2) VALUES(?)", ["Inserted from Code"]);
-await addNew(db, COMDS.AddNewGroup, ["TestGroup1"]);
+await query(db, COMDS.AddNewGroup, ['Tesslkadjst'])
 // @ts-ignore
 console.log(await getAll(db, sql))
 db.close();
