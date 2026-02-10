@@ -1,10 +1,11 @@
 // @ts-ignore
 import sqlite3 from "sqlite3";
 
-const db = new sqlite3.Database("test.db");
+const db = new sqlite3.Database("src/lib/DB/database.db");
 
 const COMDS = {
-    "GetAllData":"SELECT * FROM tester",
+    "GetAllData":"SELECT * FROM Groups",
+    "AddNewGroup":"INSERT INTO Groups(GroupName) Values(?)"
 }
 
 // @ts-ignore
@@ -57,8 +58,8 @@ const addNew = async (db, sql, params = []) => {
 let recievedData = [];
 let sql = COMDS.GetAllData;
 
-await addNew(db, "INSERT INTO tester(Field2) VALUES(?)", ["Inserted from Code"]);
-
+// await addNew(db, "INSERT INTO Groups(Field2) VALUES(?)", ["Inserted from Code"]);
+await addNew(db, COMDS.AddNewGroup, ["TestGroup1"]);
 // @ts-ignore
 console.log(await getAll(db, sql))
 db.close();
