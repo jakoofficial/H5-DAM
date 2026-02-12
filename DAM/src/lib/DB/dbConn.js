@@ -51,7 +51,7 @@ const query = async (db, sql, params = []) => {
 // @ts-ignore
 let recievedData = [];
 
-await query(db, COMDS.AddNewGroup, ['Tesslkadjst'])
+await query(db, COMDS.GetAllData, [])
 // @ts-ignore
-console.log(await getAll(db, sql))
+console.log(await getAll(db, COMDS.GetAllData))
 db.close();
