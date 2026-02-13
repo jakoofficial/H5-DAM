@@ -1,6 +1,8 @@
 // @ts-ignore
 import sqlite3 from "sqlite3";
 
+		// "start": "node src/lib/DB/dbConn.js"
+
 const db = new sqlite3.Database("src/lib/DB/database.db");
 
 const COMDS = {
