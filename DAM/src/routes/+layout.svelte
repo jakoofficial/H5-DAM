@@ -8,11 +8,15 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<nav>
-	<a href="./">Home</a>
-	<a href="./signin">Signin</a>
-</nav>
-{@render children()}
+<section>
+	<div id="content">
+		{@render children()}
+	</div>
+	<nav>
+		<a href="./">Home</a>
+		<a href="./signin">Signin</a>
+	</nav>
+</section>
 
 <style>
 	@import '../lib/css/style.css';

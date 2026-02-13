@@ -1,6 +1,16 @@
 * {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	background-color: #3f3f3f;
+    margin: 0px;
+}
+section{
+    height: 100vh;
+    background-color: #b9b9b9;
+}
+section #content {
+    height: 100vh;
+    overflow-y: auto;
+
 }
 nav {
 	border-width: 1px;
@@ -11,6 +21,10 @@ nav {
 	margin: 0 auto;
 	filter: drop-shadow(0px 2px 1px #00000025);
 	display: flex;
+    position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 nav a {
 	text-decoration: none;
@@ -32,9 +46,16 @@ nav a:hover {
 @media screen and (max-width: 420px) {
 	/* Styles for Phones in portrait*/
 	nav {
-		width: 50vw;
+		max-width: 75vw;
+		min-width: 50vw;
+    	top: 90vh;
 	}
 }
 @media screen and (min-width: 421px) {
 	/* Styles for other sizes */
+    nav {
+    	top: 1vh;
+		min-width: 50vw;
+        max-width: 75vw;
+    }
 }
