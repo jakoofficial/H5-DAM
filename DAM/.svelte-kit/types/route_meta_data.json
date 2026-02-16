@@ -8,5 +8,11 @@
 		"src/routes/+layout.js",
 		"src/routes/signin/+layout.js",
 		"src/routes/+layout.js"
+	],
+	"/taskcreate": [
+		"src/routes/taskcreate/+layout.js",
+		"src/routes/+layout.js",
+		"src/routes/taskcreate/+layout.js",
+		"src/routes/+layout.js"
 	]
 }
