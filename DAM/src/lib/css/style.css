@@ -34,6 +34,7 @@ button {
 	border-width: 1px;
 	filter: drop-shadow(0px 2px 1px #00000025);
 	font-size: 20px;
+	cursor: pointer;
 }
 nav {
 	border-width: 1px;
