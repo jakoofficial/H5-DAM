@@ -1,5 +1,6 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
+	import '../lib/css/style.css'
 
 	let { children } = $props();
 </script>
@@ -17,7 +18,3 @@
 		<a href="./signin">Signin</a>
 	</nav>
 </section>
-
-<style>
-	@import '../lib/css/style.css';
-</style>

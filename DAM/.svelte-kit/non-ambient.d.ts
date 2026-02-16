@@ -35,7 +35,7 @@ declare module "$app/types" {
 			"/": Record<string, never>;
 			"/signin": Record<string, never>
 		};
-		Pathname(): "/" | "/signin" | "/signin/";
+		Pathname(): "/" | "/signin";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/robots.txt" | string & {};
 	}
