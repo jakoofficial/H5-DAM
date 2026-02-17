@@ -64,7 +64,7 @@
 	<nav class="hidden" id="mobile-signedin" style="width: 500px;" bind:this={mobileSignedIn}>
 		<a href="./"><img src={iconHome} alt="Home" /></a>
 		<a href="./"><img src={iconChecklist} alt="Home" /></a>
-		<a href="./"><img src={iconOverview} alt="Home" /></a>
+		<a href="./overview"><img src={iconOverview} alt="Overview" /></a>
 		<a href="./?signedout"><img src={iconLogout} alt="Sign out"/></a>
 	</nav>
 </section>
