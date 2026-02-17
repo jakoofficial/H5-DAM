@@ -85,6 +85,9 @@ select {
 	cursor: pointer;
 	overflow-x: hidden;
 }
+button:hover {
+	background-color: #383838;
+}
 
 @media screen and (max-width: 420px) {
 	/* Styles for Phones in portrait*/
@@ -92,6 +95,11 @@ select {
 		max-width: 75vw;
 		min-width: 50vw;
     	top: 90vh;
+	}
+	nav a img {
+		background-color: transparent;
+		width: 35%;
+		filter: drop-shadow( 0px 2px 1px #00000050);
 	}
 }
 @media screen and (min-width: 421px) {
