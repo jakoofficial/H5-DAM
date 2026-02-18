@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.params import Body
 from security import *
 import sqlite3
 from objs import *
+import secrets
 
 app = FastAPI()
 
@@ -67,3 +69,20 @@ def create_user(username: str, password: str):
     res = cur.execute(f"INSERT INTO User(Username, Password) VALUES(?, ?)", (username, set_password_hash(password)))
     con.commit()
     con.close()
+
+@app.post("/api/signin")
+def signin_user(username:str=Body(...), given_password:str=Body(...)):
+    err:int = 0
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    u = cur.execute(f"SELECT Username, Password FROM User WHERE Username=?", (username,))
+    user = u.fetchone()
+    if user == None or user == 'NoneType': err+=1
+    else: 
+        res = verify_password(given_password, user[1])
+        if res == False: err+=1
+    if err > 0:
+        con.close()
+        return "Username or Password is incorrect. Please try again!"
+    con.close()
+    return secrets.token_urlsafe(32)
