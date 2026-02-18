@@ -1,12 +1,32 @@
+<script>
+    export let username = "";
+    export let password = "";
+    export let err_msg = "";
+    async function signin() {
+        const res = await fetch("http://localhost:8000/api/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                given_password: password
+            })
+        });
+        const data = await res.json();
+        err_msg = data.token;
+    }
+</script>
+
 <h1>Sign in</h1>
 
 <div id="loginform">
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <p id="errormsg">Error</p>
+    <input type="text" bind:value={username} placeholder="Username">
+    <input type="password" bind:value={password} placeholder="Password">
+    <p id="errormsg">{err_msg}</p>
     <div id="buttons">
         <button>Sign up</button>
-        <button>Sign in</button>
+        <button onclick={signin}>Sign in</button>
     </div>
 </div>
 

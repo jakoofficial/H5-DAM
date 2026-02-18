@@ -10,7 +10,7 @@
 
 	let { children } = $props();
 
-	let signedIn = true;
+	let signedIn = false;
 	let onMobile = true;
 
 	onMount(() => {

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.params import Body
 from security import *
@@ -8,9 +8,14 @@ import secrets
 
 app = FastAPI()
 
+origins=[
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,6 +88,6 @@ def signin_user(username:str=Body(...), given_password:str=Body(...)):
         if res == False: err+=1
     if err > 0:
         con.close()
-        return "Username or Password is incorrect. Please try again!"
+        raise HTTPException(status_code=401, detail="Invalid credentials")
     con.close()
-    return secrets.token_urlsafe(32)
+    return {"token":secrets.token_urlsafe(32)}
