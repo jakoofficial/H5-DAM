@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.params import Body
+from fastapi.params import Body, Header
 from security import *
 import sqlite3
 from objs import *
@@ -103,4 +103,13 @@ def signin_user(username:str=Body(...), given_password:str=Body(...)):
         (token, enddate, user[0]))
     con.commit()
     con.close()
-    return token
+    return {"token": token}
+
+@app.delete("/api/signout")
+def signout(session_token:str=Header(...)):
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    cur.execute(f"DELETE FROM Sessions WHERE SessionToken=?", (session_token,))
+    con.commit()
+    con.close()
+    pass

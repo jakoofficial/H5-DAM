@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/friendlist" | "/overview" | "/signin" | "/taskcreate";
+		RouteId(): "/" | "/friendlist" | "/overview" | "/signin" | "/signout" | "/taskcreate";
 		RouteParams(): {
 			
 		};
@@ -36,9 +36,10 @@ declare module "$app/types" {
 			"/friendlist": Record<string, never>;
 			"/overview": Record<string, never>;
 			"/signin": Record<string, never>;
+			"/signout": Record<string, never>;
 			"/taskcreate": Record<string, never>
 		};
-		Pathname(): "/" | "/friendlist" | "/overview" | "/signin" | "/taskcreate";
+		Pathname(): "/" | "/friendlist" | "/overview" | "/signin" | "/signout" | "/taskcreate";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/robots.txt" | string & {};
 	}

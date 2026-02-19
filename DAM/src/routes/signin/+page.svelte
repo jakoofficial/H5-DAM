@@ -1,6 +1,5 @@
 <script>
 	import { goto } from "$app/navigation";
-	import { redirect } from "@sveltejs/kit";
 
     export let username = "";
     export let password = "";
@@ -17,11 +16,14 @@
             })
         });
         const data = await res.json();
-        if (!localStorage.getItem("session_token")) {
-            localStorage.setItem("session_token", data)
-            goto("./")
+        if (!localStorage.getItem("session_token") && data.token!=null) {
+            localStorage.setItem("session_token", data.token)
+            window.location.href= "./";
         }
-        else {goto("./")}
+        else{
+            err_msg = "Credentials not recognized.".concat('\n', "Try again!")
+        }
+        // window.location.href= "./";
     }
 </script>
 
@@ -66,6 +68,7 @@
         margin-bottom: 10px;
         min-height: 50px;
         font-size: 16px;
+        width: 80%;
     }
     #loginform #buttons button {
         width:130px;

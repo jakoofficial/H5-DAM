@@ -22,6 +22,7 @@
 		if (localStorage.getItem("session_token")){
 			signedIn = true
 		}
+		else {signedIn = false}
 
 		setMenuType();
 	});
@@ -63,7 +64,7 @@
 		<a href="./"><img src={iconHome} alt="Home" /></a>
 		<a href="./"><img src={iconChecklist} alt="Home" /></a>
 		<a href="./overview"><img src={iconOverview} alt="Overview" /></a>
-		<a href="./?signedout=true"><img src={iconLogout} alt="Sign out"/></a>
+		<a href="./signout"><img src={iconLogout} alt="Sign out"/></a>
 	</nav>
 </section>
 
