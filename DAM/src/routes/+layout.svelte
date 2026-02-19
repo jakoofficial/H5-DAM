@@ -19,6 +19,10 @@
 		} else {
 			onMobile = false;
 		}
+		if (localStorage.getItem("session_token")){
+			signedIn = true
+		}
+
 		setMenuType();
 	});
 
@@ -40,12 +44,6 @@
 			mobileSignedIn?.classList.replace('visible', 'hidden');
 		}
 	}
-
-	function isSignedIn() {
-		signedIn = true;
-		if (onMobile) {
-		}
-	}
 </script>
 
 <svelte:head>
@@ -65,7 +63,7 @@
 		<a href="./"><img src={iconHome} alt="Home" /></a>
 		<a href="./"><img src={iconChecklist} alt="Home" /></a>
 		<a href="./overview"><img src={iconOverview} alt="Overview" /></a>
-		<a href="./?signedout"><img src={iconLogout} alt="Sign out"/></a>
+		<a href="./?signedout=true"><img src={iconLogout} alt="Sign out"/></a>
 	</nav>
 </section>
 

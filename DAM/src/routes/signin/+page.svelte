@@ -1,4 +1,7 @@
 <script>
+	import { goto } from "$app/navigation";
+	import { redirect } from "@sveltejs/kit";
+
     export let username = "";
     export let password = "";
     export let err_msg = "";
@@ -14,7 +17,11 @@
             })
         });
         const data = await res.json();
-        err_msg = data.token;
+        if (!localStorage.getItem("session_token")) {
+            localStorage.setItem("session_token", data)
+            goto("./")
+        }
+        else {goto("./")}
     }
 </script>
 
