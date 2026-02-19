@@ -1,8 +1,9 @@
 <script>
     export let icon;
     export let buttonText = "hello";
+    export let destination = "./"
 </script>
-<button class="overviewItem">
+<button on:click={() => {window.location.href=destination}} class="overviewItem">
     <img src={icon} alt={buttonText}>
     <p>{buttonText}</p>
 </button>

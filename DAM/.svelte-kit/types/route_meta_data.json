@@ -6,6 +6,12 @@
 	"/friendlist": [
 		"src/routes/+layout.js"
 	],
+	"/groupcreate": [
+		"src/routes/+layout.js"
+	],
+	"/groups": [
+		"src/routes/+layout.js"
+	],
 	"/overview": [
 		"src/routes/+layout.js"
 	],
