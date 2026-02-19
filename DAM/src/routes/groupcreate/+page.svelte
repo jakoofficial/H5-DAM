@@ -1,8 +1,12 @@
+<script>
+    import Friendselect from "$lib/components/friendselect.svelte";
+</script>
 <h1>Group Creation</h1>
 <div id="overview">
     <input id="groupnameInput" type="text" placeholder="Group Name" />
     <div id="friendlist">
         <!-- Add friendslist here -->
+         <Friendselect></Friendselect>
     </div>
     <button>Create</button>
 </div>
@@ -15,6 +19,7 @@
 	}
     #overview {
         width: 85%;
+        height: 70%;
         margin: auto;
     }
     input{
@@ -26,7 +31,8 @@
     }
     #friendlist{
         width: 100%;
-        height: 45vh;
+        height: 65%;
+        overflow-y: auto;
         background-color: #2c2c2c;
         border-radius: 5px;
 	    box-shadow: 0px 2px 1px #00000050 inset;
@@ -38,24 +44,4 @@
         height: 46px;
         width: 45%;
     }
-    /* button{
-        height: 46px;
-    }
-	#overview {
-		width: 85%;
-		margin: auto;
-	}
-    #overview input {
-        width: 98%;
-        height: 46px;
-        font-size: 18px;
-        text-indent: 5px;
-    }
-	#friendlist {
-		width: 85%;
-		height: 45%;
-        margin: auto;
-		background-color: #000000;
-		filter: drop-shadow(0px 2px 1px #00000025);
-	} */
 </style>
