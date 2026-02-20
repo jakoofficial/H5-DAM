@@ -38,7 +38,8 @@
 	}
 	h1 {
 		text-align: center;
-		margin-top: 98px;
+		margin-top: 60px;
+        margin-bottom: 35px;
 	}
 	#search {
 		width: 100%;
@@ -80,5 +81,6 @@
         width: 100%;
         height: 70%;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 </style>
