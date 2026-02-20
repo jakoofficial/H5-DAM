@@ -1,13 +1,17 @@
 <script>
 	import addnew from '$lib/assets/addnew.svg';
     import Tasklistitem from '$lib/components/tasklistitem.svelte';
+
+    function createnew() {
+        window.location.href="./taskcreate";
+    }
 </script>
 
 <div id="container">
 	<h1>Tasks</h1>
 	<div id="search">
 		<input placeholder="Search" type="text" />
-		<button>
+		<button on:click={createnew}>
 			<img src={addnew} alt="" />
 		</button>
 	</div>

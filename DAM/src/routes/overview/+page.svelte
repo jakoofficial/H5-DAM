@@ -10,7 +10,7 @@
 
 <h1>Overview</h1>
 <div id="overviewMenu">
-    <Overviewitem icon={itemFriends} buttonText="Friends"></Overviewitem>
+    <Overviewitem icon={itemFriends} destination="./friendlist" buttonText="Friends"></Overviewitem>
     <Overviewitem icon={itemGroups} destination="./groups" buttonText="Groups"></Overviewitem>
     <Overviewitem icon={itemCalendar} buttonText="Calendar"></Overviewitem>
     <Overviewitem icon={itemProfile} buttonText="Profile"></Overviewitem>

@@ -2,8 +2,12 @@
 	export let TaskObj = {
         title: "Task",
         desc: "s",
+		completed: false
     };
 	import checkbox from '$lib/assets/checkbox.svg';
+	import checkboxChecked from '$lib/assets/checkedbox.svg';
+
+	let iscompleted = TaskObj.completed;
 </script>
 
 <div id="overview">
