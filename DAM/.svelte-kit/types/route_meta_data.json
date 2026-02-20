@@ -29,5 +29,8 @@
 		"src/routes/+layout.js",
 		"src/routes/taskcreate/+layout.js",
 		"src/routes/+layout.js"
+	],
+	"/tasklist": [
+		"src/routes/+layout.js"
 	]
 }

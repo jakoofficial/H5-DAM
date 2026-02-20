@@ -22,7 +22,9 @@
 		if (localStorage.getItem("session_token")){
 			signedIn = true
 		}
-		else {signedIn = false}
+		else {
+			signedIn = false
+		}
 
 		setMenuType();
 	});
@@ -62,7 +64,7 @@
 	</nav>
 	<nav class="hidden" id="mobile-signedin" style="width: 500px;" bind:this={mobileSignedIn}>
 		<a href="./"><img src={iconHome} alt="Home" /></a>
-		<a href="./"><img src={iconChecklist} alt="Home" /></a>
+		<a href="./tasklist"><img src={iconChecklist} alt="tasks" /></a>
 		<a href="./overview"><img src={iconOverview} alt="Overview" /></a>
 		<a href="./signout"><img src={iconLogout} alt="Sign out"/></a>
 	</nav>

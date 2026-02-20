@@ -1,6 +1,7 @@
 <script>
 	import Groupbox from '$lib/components/groupbox.svelte';
 	import addnew from '$lib/assets/addnew.svg';
+	import { onMount } from 'svelte';
 
 	function createnew() {
         window.location.href = "./groupcreate"
