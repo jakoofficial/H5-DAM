@@ -2,16 +2,42 @@
 	import addnew from '$lib/assets/addnew.svg';
 	import Tasklistitem from '$lib/components/tasklistitem.svelte';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
-	let date = '00';
-	function createTask() {
-		goto('./taskcreate?date=' + date);
+	let date = new Date();
+
+    onMount(()=>{
+        const d = getDaysInMonth(date.getMonth(), date.getFullYear())
+        const daypick = document.getElementById("date-day")
+        for (let i = 0; i < d.length; i++){
+            const opt = document.createElement("option")
+            const day = i+1;
+            opt.value = day.toString();
+            opt.innerHTML = day.toString();
+            daypick?.appendChild(opt);
+        }
+        console.log(daypick)
+    })
+	// @ts-ignore
+	function getDaysInMonth(month, year) {
+		var date = new Date(year, month, 1);
+		var days = [];
+		while (date.getMonth() === month) {
+			days.push(new Date(date));
+			date.setDate(date.getDate() + 1);
+		}
+		return days;
 	}
 
-    let setDatePickerVisible = false
-    function DatepickerShow(show = false){
-        setDatePickerVisible = show;
-    }
+	const taskDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+	function createTask() {
+		goto('./taskcreate?date=' + taskDate);
+	}
+
+	let setDatePickerVisible = false;
+	function DatepickerShow(show = false) {
+		setDatePickerVisible = show;
+	}
 </script>
 
 <div id="container">
@@ -31,13 +57,12 @@
 	</div>
 	<div id="dateselect">
 		<button id="dateback" class="datebtn">&lt;</button>
-		<button id="datebutton" on:click={() => DatepickerShow(true)}>00-00-0000</button>
+		<button id="datebutton" on:click={() => DatepickerShow(true)}>{taskDate}</button>
 		<button id="dateforward" class="datebtn">&gt;</button>
-		
-        <div id="datepickerBack" style:visibility={setDatePickerVisible ? 'visible':'hidden'}>
+
+		<div id="datepickerBack" style:visibility={setDatePickerVisible ? 'visible' : 'hidden'}>
 			<div id="datepicker">
 				<select name="startdate-day" id="date-day">
-					<option value="00">00</option>
 				</select>
 				<select name="startdate-month" id="date-month">
 					<option value="00">January</option>
@@ -45,11 +70,11 @@
 				<select name="startdate-year" id="date-year">
 					<option value="00">0000</option>
 				</select>
-            </div>
-            <div id="buttons">
-                <button on:click={() => DatepickerShow(false)}>Cancel</button>
-                <button on:click={() => DatepickerShow(false)}>Confirm</button>
-            </div>
+			</div>
+			<div id="buttons">
+				<button on:click={() => DatepickerShow(false)}>Cancel</button>
+				<button on:click={() => DatepickerShow(false)}>Confirm</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -79,35 +104,35 @@
 		width: 80%;
 		top: 70%;
 		left: 50%;
-        background-color: transparent;
+		background-color: transparent;
 		transform: translateX(-50%);
 	}
 	#datepicker select {
-        height: 50px;
+		height: 50px;
 		width: 100%;
-        margin: 0px;
+		margin: 0px;
 		border-radius: 0px;
 	}
 	#datepicker select:nth-child(1) {
-        border-radius: 5px 0px 0px 5px;
+		border-radius: 5px 0px 0px 5px;
 	}
 	#datepicker select:nth-child(3) {
-        border-radius: 0px 5px 5px 0px;
+		border-radius: 0px 5px 5px 0px;
 	}
-    #buttons {
-        background-color: transparent;
+	#buttons {
+		background-color: transparent;
 		width: 80%;
-        position: fixed;
-        top: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-    }
-    #buttons button {
-        width: 100%;
-        height: 50px;
-        margin: 0 5px;
-    }
+		position: fixed;
+		top: 80%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+	}
+	#buttons button {
+		width: 100%;
+		height: 50px;
+		margin: 0 5px;
+	}
 	button {
 		width: 60px;
 		height: 36px;
