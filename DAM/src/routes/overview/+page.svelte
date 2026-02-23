@@ -12,7 +12,7 @@
 <div id="overviewMenu">
     <Overviewitem icon={itemFriends} destination="./friendlist" buttonText="Friends"></Overviewitem>
     <Overviewitem icon={itemGroups} destination="./groups" buttonText="Groups"></Overviewitem>
-    <Overviewitem icon={itemCalendar} buttonText="Calendar"></Overviewitem>
+    <Overviewitem icon={itemCalendar} destination="./calendar" buttonText="Calendar"></Overviewitem>
     <Overviewitem icon={itemProfile} buttonText="Profile"></Overviewitem>
 </div>
 <style>
