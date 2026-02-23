@@ -6,18 +6,41 @@
 
 	let date = new Date();
 
-    onMount(()=>{
-        const d = getDaysInMonth(date.getMonth(), date.getFullYear())
-        const daypick = document.getElementById("date-day")
-        for (let i = 0; i < d.length; i++){
-            const opt = document.createElement("option")
-            const day = i+1;
-            opt.value = day.toString();
-            opt.innerHTML = day.toString();
-            daypick?.appendChild(opt);
+	onMount(() => {
+		const d = getDaysInMonth(date.getMonth(), date.getFullYear());
+		const m = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
+		];
+
+		const daypick = document.getElementById('date-day');
+		const monthpick = document.getElementById('date-month');
+		for (let i = 0; i < d.length; i++) {
+			const opt = document.createElement('option');
+			const day = i + 1;
+			opt.value = day.toString();
+			opt.innerHTML = day.toString();
+			daypick?.appendChild(opt);
+		}
+		for (let i = 0; i < m.length; i++) {
+			const opt = document.createElement('option');
+            const month = m[i];
+            opt.value = month;
+            opt.innerHTML = month;
+            monthpick?.appendChild(opt)
         }
-        console.log(daypick)
-    })
+		console.log(daypick);
+	});
 	// @ts-ignore
 	function getDaysInMonth(month, year) {
 		var date = new Date(year, month, 1);
@@ -62,13 +85,10 @@
 
 		<div id="datepickerBack" style:visibility={setDatePickerVisible ? 'visible' : 'hidden'}>
 			<div id="datepicker">
-				<select name="startdate-day" id="date-day">
-				</select>
+				<select name="startdate-day" id="date-day"> </select>
 				<select name="startdate-month" id="date-month">
-					<option value="00">January</option>
 				</select>
 				<select name="startdate-year" id="date-year">
-					<option value="00">0000</option>
 				</select>
 			</div>
 			<div id="buttons">
