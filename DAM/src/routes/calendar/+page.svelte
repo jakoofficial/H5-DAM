@@ -22,9 +22,11 @@
 			'November',
 			'December'
 		];
-
+		const y = getYears()
+        console.log(y)
 		const daypick = document.getElementById('date-day');
 		const monthpick = document.getElementById('date-month');
+		const yearpick = document.getElementById('date-year');
 		for (let i = 0; i < d.length; i++) {
 			const opt = document.createElement('option');
 			const day = i + 1;
@@ -34,13 +36,23 @@
 		}
 		for (let i = 0; i < m.length; i++) {
 			const opt = document.createElement('option');
-            const month = m[i];
-            opt.value = month;
-            opt.innerHTML = month;
-            monthpick?.appendChild(opt)
-        }
-		console.log(daypick);
+			const month = m[i];
+			opt.value = month;
+			opt.innerHTML = month;
+			monthpick?.appendChild(opt);
+		}
 	});
+
+	function getYears() {
+		var max = new Date().getFullYear();
+		var min = max - 9;
+		var years = [];
+
+		for (var i = max; i >= min; i--) {
+			years.push(i);
+		}
+		return years;
+	}
 	// @ts-ignore
 	function getDaysInMonth(month, year) {
 		var date = new Date(year, month, 1);
@@ -86,10 +98,8 @@
 		<div id="datepickerBack" style:visibility={setDatePickerVisible ? 'visible' : 'hidden'}>
 			<div id="datepicker">
 				<select name="startdate-day" id="date-day"> </select>
-				<select name="startdate-month" id="date-month">
-				</select>
-				<select name="startdate-year" id="date-year">
-				</select>
+				<select name="startdate-month" id="date-month"> </select>
+				<select name="startdate-year" id="date-year"> </select>
 			</div>
 			<div id="buttons">
 				<button on:click={() => DatepickerShow(false)}>Cancel</button>
