@@ -41,11 +41,18 @@
 			opt.innerHTML = month;
 			monthpick?.appendChild(opt);
 		}
+		for (let i = 0; 1 < y.length; i++) {
+			const opt = document.createElement('option');
+			const year = y[i];
+			opt.value = year.toString();
+			opt.innerHTML = year.toString();
+			yearpick?.appendChild(opt);
+		}
 	});
 
 	function getYears() {
 		var max = new Date().getFullYear();
-		var min = max - 9;
+		var min = 2025;
 		var years = [];
 
 		for (var i = max; i >= min; i--) {

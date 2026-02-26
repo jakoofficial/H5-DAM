@@ -35,6 +35,16 @@ def addnew_group(groupName:str):
     con.commit()
     con.close()
 
+@app.get("/api/getfriends")
+def getfriendsofuser(sessionToken:str = Header(...)):
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    # res = cur.execute(f"SELECT User.Username FROM User INNER JOIN FriendsList On FriendsList.FriendID = User.UserID WHERE FriendsList.UserID=?", (userID,))
+    res = cur.execute(f"SELECT User.Username FROM User INNER JOIN FriendsList On FriendsList.FriendID = User.UserID INNER JOIN Sessions On Sessions.UserID = FriendsList.UserID WHERE Sessions.SessionToken = ?", (sessionToken,))
+    frList = res.fetchall()
+    con.close()
+    return frList
+
 #Needs security
 @app.delete("/api/removegroup")
 def remove_group(groupName):
