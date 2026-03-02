@@ -10,15 +10,11 @@
     let data = [];
     let ready = false;
     async function getFriendsList(){
-        // const res = await fetch("http://localhost:8000/api/getfriends", {headers: {}});
-        // const resjson = await res.json();
         const dataArr = await Get("getfriends", {"sessionToken":localStorage.getItem("session_token")})
         data = dataArr[0]
         ready = true
-        // console.log(data[0])
     }
     onMount(() => {getFriendsList()})
-    // window.addEventListener("load", (event)=>{getFriendsList})
 
 </script>
 

@@ -1,10 +1,18 @@
 <script>
     import checkbox from '$lib/assets/checkbox.svg';
     import checkedbox from '$lib/assets/checkedbox.svg';
+
+    export let name = "";
+    export let selected = false;
+
+    function check() {
+        selected = !selected
+    }
 </script>
 <div>
-    <p>Name</p>
-    <img src={checkedbox} alt="">
+    <button on:click={check}>
+    <p>{name}</p>
+    <img src={selected?checkedbox:checkbox} alt="Check"></button>
 </div>
 
 <style>
@@ -17,16 +25,22 @@
     }
     p{
         width: 88%;
-        height: 100%;
         font-size: 18px;
-        display: flex;
-        align-items: center;
+        position: relative;
+        top:62%;
+        transform: translateY(-50%);
+        text-align: left;
         background-color: transparent;
         text-indent: 5px;
     }
+    button{
+        width:100%;
+        background-color: transparent;
+        border: none;
+        display: flex;
+    }
     img{
         width: 25px;
-
         float: right;
     }
 </style>

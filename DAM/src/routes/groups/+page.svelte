@@ -1,11 +1,29 @@
 <script>
+// @ts-nocheck
 	import Groupbox from '$lib/components/groupbox.svelte';
 	import addnew from '$lib/assets/addnew.svg';
+	import { Get } from '$lib/DataFetcher';
 	import { onMount } from 'svelte';
 
 	function createnew() {
-        window.location.href = "./groupcreate"
-    }
+		window.location.href = './groupcreate';
+	}
+	/**
+	 * @type {string | any[] | null | undefined}
+	 */
+	let data = [];
+	let ready = false;
+	async function getGroupsList() {
+		const dataArr = await Get('get_groups_on_user', {
+			sessionToken: localStorage.getItem('session_token')
+		});
+		data = dataArr[0];
+		ready = true;
+		console.log(dataArr)
+	}
+	onMount(() => {
+		getGroupsList();
+	});
 </script>
 
 <h1>Groups</h1>
@@ -14,7 +32,11 @@
 	<button on:click={createnew}><img alt="" src={addnew} /></button>
 </div>
 <div id="overview">
-	<Groupbox groupname="Test"></Groupbox>
+	{#if ready == true && data.length > 0}
+		{#each data[1] as item}
+			<Groupbox groupname={item}></Groupbox>
+		{/each}
+	{/if}
 </div>
 
 <style>

@@ -23,11 +23,7 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
-@app.get("/api/hello")
-def read_root():
-    return {"Hello": "World"}
-
-@app.post("/api/addnewgroup")
+@app.post("/api/addnewgroup", tags=["Group"])
 def addnew_group(groupName:str):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
@@ -35,18 +31,17 @@ def addnew_group(groupName:str):
     con.commit()
     con.close()
 
-@app.get("/api/getfriends")
+@app.get("/api/getfriends", tags=["Friends"])
 def getfriendsofuser(sessionToken:str = Header(...)):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
-    # res = cur.execute(f"SELECT User.Username FROM User INNER JOIN FriendsList On FriendsList.FriendID = User.UserID WHERE FriendsList.UserID=?", (userID,))
     res = cur.execute(f"SELECT User.Username FROM User INNER JOIN FriendsList On FriendsList.FriendID = User.UserID INNER JOIN Sessions On Sessions.UserID = FriendsList.UserID WHERE Sessions.SessionToken = ?", (sessionToken,))
     frList = res.fetchall()
     con.close()
     return frList
 
 #Needs security
-@app.delete("/api/removegroup")
+@app.delete("/api/removegroup", tags=["Group"])
 def remove_group(groupName):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
@@ -55,16 +50,16 @@ def remove_group(groupName):
     con.close()
     pass
 
-@app.get("/api/get_groups_on_user")
-def get_groups_on_user(userID):
+@app.get("/api/get_groups_on_user", tags=["Group"])
+def get_groups_on_user(sessionToken:str = Header(...)):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
-    res = cur.execute(f"SELECT * FROM GroupList WHERE UserID =?", (userID,))
+    res = cur.execute(f"SELECT GroupList.GroupID, groups.GroupName FROM Groups INNER JOIN GroupList ON Groups.GroupID = GroupList.GroupID INNER JOIN Sessions ON GroupList.UserID = Sessions.UserID WHERE Sessions.SessionToken = ?;", (sessionToken,))
     resList = res.fetchall()
     con.close()
     return resList
 
-@app.get("/api/get_groups")
+@app.get("/api/get_groups", tags=["Group"])
 def get_groups():
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
@@ -73,7 +68,7 @@ def get_groups():
     con.close()
     return resList
 
-@app.post("/api/create_new_user")
+@app.post("/api/create_new_user", tags=["User"])
 def create_user(username: str, password: str):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
@@ -86,7 +81,7 @@ def create_user(username: str, password: str):
     con.commit()
     con.close()
 
-@app.post("/api/signin")
+@app.post("/api/signin", tags=["User"])
 def signin_user(username:str=Body(...), given_password:str=Body(...)):
     err:int = 0
     con = sqlite3.connect("DAMDB.db")
@@ -115,7 +110,7 @@ def signin_user(username:str=Body(...), given_password:str=Body(...)):
     con.close()
     return {"token": token}
 
-@app.delete("/api/signout")
+@app.delete("/api/signout", tags=["User"])
 def signout(session_token:str=Header(...)):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
