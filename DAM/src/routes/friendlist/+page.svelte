@@ -14,6 +14,9 @@
         data = dataArr
         ready = true
     }
+
+	
+
     onMount(() => {getFriendsList()})
 
 </script>
