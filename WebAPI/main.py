@@ -81,6 +81,15 @@ def create_user(username: str = Body(...), password: str= Body(...)):
     con.commit()
     con.close()
 
+@app.get("/api/get_user", tags=["User"])
+def get_user(session_token: str = Header(...)):
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    res = cur.execute(f"SELECT Username FROM User INNER JOIN Sessions ON User.UserID = Sessions.UserID WHERE SessionToken=?", (session_token,))
+    data = res.fetchall()
+    con.close() 
+    return data
+
 @app.post("/api/signin", tags=["User"])
 def signin_user(username:str=Body(...), given_password:str=Body(...)):
     err:int = 0

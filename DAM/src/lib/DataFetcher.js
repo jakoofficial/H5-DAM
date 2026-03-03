@@ -120,9 +120,9 @@ export async function Put(endpoint, body=null, header=null, form=false){
 }
 
 export function GetSessionToken(){
-    return sessionStorage.getItem('sessionToken');
+    return localStorage.getItem('session_token');
 }
 
 export function SetSessionToken(token){
-    sessionStorage.setItem('sessionToken', token);
+    localStorage.setItem('session_token', token);
 }

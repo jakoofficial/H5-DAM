@@ -24,15 +24,6 @@
         console.log(groupMemebers)
     }
 
-    function updateSelected(name, selected) {
-        console.log(name)
-        if (selected) {
-            if(!selected) {
-
-            }
-        }
-    }
-
 	onMount(() => {
 		getFriendsList();
 	});
