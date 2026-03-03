@@ -40,6 +40,19 @@ def getfriendsofuser(sessionToken:str = Header(...)):
     con.close()
     return frList
 
+@app.post("/api/addfriend", tags=["Friends"])
+def addfriend(token:str =Header(...), friendname:str=Header(...)):
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    check = cur.execute(f"INSERT INTO friendslist (UserID, friendid) SELECT (SELECT UserID FROM Sessions WHERE SessionToken = ?), (SELECT UserID FROM User WHERE Username = ?);", (token, friendname))
+    if check.fetchone() is not None:
+        print(check.fetchone())
+        con.close()
+        return f"User with that name was not found!"
+    con.commit()
+    con.close()
+    pass
+
 #Needs security
 @app.delete("/api/removegroup", tags=["Group"])
 def remove_group(groupName):
