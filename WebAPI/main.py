@@ -69,7 +69,7 @@ def get_groups():
     return resList
 
 @app.post("/api/create_new_user", tags=["User"])
-def create_user(username: str, password: str):
+def create_user(username: str = Body(...), password: str= Body(...)):
     con = sqlite3.connect("DAMDB.db")
     cur = con.cursor()
     check = cur.execute(f"SELECT Username FROM User WHERE Username=?", (username,))

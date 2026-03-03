@@ -11,7 +11,7 @@
     let ready = false;
     async function getFriendsList(){
         const dataArr = await Get("getfriends", {"sessionToken":localStorage.getItem("session_token")})
-        data = dataArr[0]
+        data = dataArr
         ready = true
     }
     onMount(() => {getFriendsList()})

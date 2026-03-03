@@ -13,7 +13,7 @@
 		const dataArr = await Get('getfriends', {
 			sessionToken: localStorage.getItem('session_token')
 		});
-		data = dataArr[0];
+		data = dataArr;
 		ready = true;
 	}
 
@@ -21,7 +21,7 @@
     let members = data.map(()=>false);
     $: groupMemebers = data.filter((_, i) => members[i]);
     function CreateGroup() {
-        
+        console.log(groupMemebers)
     }
 
     function updateSelected(name, selected) {

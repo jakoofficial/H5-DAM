@@ -1,5 +1,6 @@
 <script>
 	import { goto } from "$app/navigation";
+    import { Post } from "$lib/DataFetcher";
 
     export let username = "";
     export let password = "";
@@ -23,7 +24,13 @@
         else{
             err_msg = "Credentials not recognized.".concat('\n', "Try again!")
         }
-        // window.location.href= "./";
+    }
+
+    async function signup() {
+        // @ts-ignore
+        const dataArr = await Post('create_new_user',{'username':username, 'password':password})
+        err_msg = dataArr
+        window.location.href= "./";
     }
 </script>
 
@@ -34,7 +41,7 @@
     <input type="password" bind:value={password} placeholder="Password">
     <p id="errormsg">{err_msg}</p>
     <div id="buttons">
-        <button>Sign up</button>
+        <button onclick={signup}>Sign up</button>
         <button onclick={signin}>Sign in</button>
     </div>
 </div>
