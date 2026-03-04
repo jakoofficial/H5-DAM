@@ -6,6 +6,7 @@ import sqlite3
 from objs import *
 import secrets
 from datetime import date, timedelta
+import jwt
 
 app = FastAPI()
 
