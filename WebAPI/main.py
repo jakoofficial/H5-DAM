@@ -14,6 +14,10 @@ origins=[
     "http://localhost:5173",
     "http://127.0.0.1:5173"
 ]
+encoded = jwt.encode({"test": "payload"}, "secret", algorithm="HS256")
+decoded = jwt.decode(encoded,"secret", "HS256")
+print(decoded)
+
 
 app.add_middleware(
     CORSMiddleware,
