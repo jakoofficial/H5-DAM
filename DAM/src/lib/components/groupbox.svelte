@@ -1,10 +1,15 @@
 <script>
-    export let groupname = ""
     import iconRemove from '$lib/assets/remove.svg'
+    export let groupname = ""
+    export let groupID = 0
+
+    function gotoGroup() {
+        window.location.href = "./groups/groupview"
+    }
 </script>
 
 <div id="box">
-    <button>{groupname}</button>
+    <button on:click={gotoGroup}>{groupname}</button>
     <button>
         <img src={iconRemove} alt="">
     </button>
