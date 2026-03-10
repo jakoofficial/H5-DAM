@@ -1,10 +1,14 @@
 <script>
+	import { goto } from '$app/navigation';
     import iconRemove from '$lib/assets/remove.svg'
+	import { groupIDStore } from '$lib/stores';
     export let groupname = ""
     export let groupID = 0
 
     function gotoGroup() {
-        window.location.href = "./groups/groupview"
+        // @ts-ignore
+        groupIDStore.set(groupID.toString());
+        goto('./groups/groupview');
     }
 </script>
 

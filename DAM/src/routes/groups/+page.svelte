@@ -19,7 +19,6 @@
 		});
 		data = dataArr[0];
 		ready = true;
-		console.log(dataArr)
 	}
 	onMount(() => {
 		getGroupsList();
@@ -34,7 +33,7 @@
 <div id="overview">
 	{#if ready == true && data.length > 0}
 		{#each data[1] as item}
-			<Groupbox groupname={item}></Groupbox>
+			<Groupbox groupname={item} groupID={data[0]}></Groupbox>
 		{/each}
 	{/if}
 </div>

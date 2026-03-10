@@ -54,7 +54,6 @@ declare module '$env/static/private' {
 	export const npm_config_local_prefix: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const CINNAMON_VERSION: string;
-	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 	export const npm_config_engine_strict: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 	export const COLORTERM: string;
@@ -66,7 +65,6 @@ declare module '$env/static/private' {
 	export const npm_config_prefix: string;
 	export const npm_config_npm_version: string;
 	export const XDG_SESSION_CLASS: string;
-	export const USER_ZDOTDIR: string;
 	export const XDG_SESSION_ID: string;
 	export const TERM: string;
 	export const npm_config_cache: string;
@@ -88,7 +86,6 @@ declare module '$env/static/private' {
 	export const LANG: string;
 	export const DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 	export const XDG_CURRENT_DESKTOP: string;
-	export const VSCODE_INJECTION: string;
 	export const XDG_SESSION_DESKTOP: string;
 	export const XAUTHORITY: string;
 	export const TERM_PROGRAM: string;
@@ -105,6 +102,7 @@ declare module '$env/static/private' {
 	export const GJS_DEBUG_OUTPUT: string;
 	export const XDG_VTNR: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
+	export const VSCODE_NONCE: string;
 	export const npm_config_globalconfig: string;
 	export const npm_config_init_module: string;
 	export const PWD: string;
@@ -112,7 +110,6 @@ declare module '$env/static/private' {
 	export const XDG_CONFIG_DIRS: string;
 	export const XDG_DATA_DIRS: string;
 	export const NVM_CD_FLAGS: string;
-	export const ZDOTDIR: string;
 	export const npm_config_global_prefix: string;
 	export const STARSHIP_SESSION_KEY: string;
 	export const npm_command: string;
@@ -176,7 +173,6 @@ declare module '$env/dynamic/private' {
 		npm_config_local_prefix: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		CINNAMON_VERSION: string;
-		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 		npm_config_engine_strict: string;
 		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 		COLORTERM: string;
@@ -188,7 +184,6 @@ declare module '$env/dynamic/private' {
 		npm_config_prefix: string;
 		npm_config_npm_version: string;
 		XDG_SESSION_CLASS: string;
-		USER_ZDOTDIR: string;
 		XDG_SESSION_ID: string;
 		TERM: string;
 		npm_config_cache: string;
@@ -210,7 +205,6 @@ declare module '$env/dynamic/private' {
 		LANG: string;
 		DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 		XDG_CURRENT_DESKTOP: string;
-		VSCODE_INJECTION: string;
 		XDG_SESSION_DESKTOP: string;
 		XAUTHORITY: string;
 		TERM_PROGRAM: string;
@@ -227,6 +221,7 @@ declare module '$env/dynamic/private' {
 		GJS_DEBUG_OUTPUT: string;
 		XDG_VTNR: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
+		VSCODE_NONCE: string;
 		npm_config_globalconfig: string;
 		npm_config_init_module: string;
 		PWD: string;
@@ -234,7 +229,6 @@ declare module '$env/dynamic/private' {
 		XDG_CONFIG_DIRS: string;
 		XDG_DATA_DIRS: string;
 		NVM_CD_FLAGS: string;
-		ZDOTDIR: string;
 		npm_config_global_prefix: string;
 		STARSHIP_SESSION_KEY: string;
 		npm_command: string;

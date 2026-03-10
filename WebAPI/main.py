@@ -77,6 +77,15 @@ def get_groups_on_user(sessionToken:str = Header(...)):
     con.close()
     return resList
 
+@app.get("/api/get_group_by_id", tags=["Group"])
+def get_group_by_id(groupID:str = Header(...)):
+    con = sqlite3.connect("DAMDB.db")
+    cur = con.cursor()
+    res = cur.execute("SELECT User.Username, Groups.GroupName FROM GroupList JOIN User ON User.UserID = GroupList.UserID JOIN Groups ON Groups.GroupID = GroupList.GroupID WHERE Groups.GroupID = ?", (groupID,))
+    resGroup = res.fetchall()
+    con.close()
+    return resGroup
+
 @app.get("/api/get_groups", tags=["Group"])
 def get_groups():
     con = sqlite3.connect("DAMDB.db")
