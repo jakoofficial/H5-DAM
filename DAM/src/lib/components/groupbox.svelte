@@ -8,7 +8,7 @@
     function gotoGroup() {
         // @ts-ignore
         groupIDStore.set(groupID.toString());
-        goto('./groups/groupview');
+        goto('./groupview');
     }
 </script>
 

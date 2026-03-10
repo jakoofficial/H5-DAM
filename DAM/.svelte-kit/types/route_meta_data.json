@@ -16,7 +16,7 @@
 	"/groups": [
 		"src/routes/+layout.js"
 	],
-	"/groups/groupview": [
+	"/groupview": [
 		"src/routes/+layout.js"
 	],
 	"/overview": [

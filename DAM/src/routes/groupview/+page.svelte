@@ -32,7 +32,6 @@
 			// @ts-ignore
 			members.push(dataArr[i][0]);
 		}
-		console.log(members);
 
 		ready = true;
 	}

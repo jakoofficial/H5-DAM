@@ -3,8 +3,10 @@
 	import Tasklistitem from '$lib/components/tasklistitem.svelte';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { read } from '$app/server';
 
 	let date = new Date();
+	let ready = false;
 
 	onMount(() => {
 		const d = getDaysInMonth(date.getMonth(), date.getFullYear());
@@ -23,7 +25,6 @@
 			'December'
 		];
 		const y = getYears()
-        console.log(y)
 		const daypick = document.getElementById('date-day');
 		const monthpick = document.getElementById('date-month');
 		const yearpick = document.getElementById('date-year');
@@ -48,6 +49,7 @@
 			opt.innerHTML = year.toString();
 			yearpick?.appendChild(opt);
 		}
+		ready = true;
 	});
 
 	function getYears() {
@@ -88,14 +90,14 @@
 		<img src={addnew} alt="Create new task" />
 	</button>
 	<div id="calendartasks">
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
-		<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
+	<Tasklistitem></Tasklistitem>
 	</div>
 	<div id="dateselect">
 		<button id="dateback" class="datebtn">&lt;</button>
