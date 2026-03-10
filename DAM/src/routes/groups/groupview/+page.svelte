@@ -1,48 +1,55 @@
 <script>
 	import { goto } from '$app/navigation';
 
-// @ts-nocheck
+	// @ts-nocheck
 
 	import Friendbox from '$lib/components/friendbox.svelte';
 
-// @ts-nocheck
+	// @ts-nocheck
 
 	import { Get } from '$lib/DataFetcher';
 	import { groupIDStore } from '$lib/stores';
 	import { onMount } from 'svelte';
 	export let groupname = 'Group';
-	export let id = "";
-	let ready = false
-    /**
+	export let id = '';
+	let ready = false;
+	/**
 	 * @type {string | any[] | null | undefined}
 	 */
-    let data = [];
-    // @ts-ignore
+	// @ts-ignore
+	let members = [];
+	// @ts-ignore
 	groupIDStore.subscribe((value) => (id = value));
 
-    async function getGroupDetails(){
-        if (id == "" || id == null) {goto("./")}
-        // @ts-ignore
-        const dataArr = await Get("get_group_by_id", {"groupID":id})
-        // groupname = dataArr[0][1];
+	async function getGroupDetails() {
+		if (id == '' || id == null) {
+			goto('./');
+		}
+		// @ts-ignore
+		const dataArr = await Get('get_group_by_id', { groupID: id });
+		groupname = dataArr[0][1];
+		for (let i = 0; i < dataArr.length; i++) {
+			// @ts-ignore
+			members.push(dataArr[i][0]);
+		}
+		console.log(members);
 
-        // for(let i = 0; dataArr[0]){
+		ready = true;
+	}
 
-        // }
-
-        ready = true;
-    }
-
-	onMount(()=>{getGroupDetails()});
+	onMount(() => {
+		getGroupDetails();
+	});
 </script>
 
 <div id="wrapper">
-<!-- {#if ready==true && data.length > 0}
-    {#each data as d}
-        <Friendbox friendname={d}></Friendbox>
-    {/each}
-{/if} -->
 	<h1>{groupname}</h1>
+    <p>Members</p>
+	{#if ready == true && members.length > 0}
+		{#each members as member}
+			<Friendbox friendname={member}></Friendbox>
+		{/each}
+	{/if}
 </div>
 
 <style>
