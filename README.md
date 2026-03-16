@@ -27,7 +27,7 @@ Dette kræver at man har Node.js installere og have kørt ``npm install`` før d
 ### WebAPI
 Find WebAPI mappen (WebAPI) og start et python virtuelt enviornment og kør kommandoen ``fastapi dev main.py``<br>
 Hvis intet enviornment kan findes skal sådan et oprettes. Skriv kommandoen ``python -m venv WebAPI``<br>
-Kør herefter ``source WebAPI/bin/activate`` for at bruge det nye enviornment.
+Kør herefter ``source [MappeTilAPI]/WebAPI/bin/activate`` for at bruge det nye enviornment.
 
 ### I Applikationen
 Efter opsætningen er gjort kan man nu bruge app'en, hvis api'en er oppe og køre kan man lave eller bruge en bruger som er lavet for eksempel brugeren admin med koden admin.<br>
