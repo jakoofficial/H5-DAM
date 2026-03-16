@@ -22,7 +22,7 @@ Projektet er en daglig opgave tracker hvor man alene eller med sine venner kan o
 ### Applikation
 Find projektets mappe (DAM) og åbne en konsol og skrive kommmandoen ``npm run dev``<br>
 Dette starter en lokal server hvor applikationen vil køre.<br>
-Dette kræver at man har Node.js installere før det kan køres.
+Dette kræver at man har Node.js installere og have kørt ``npm install`` før det kan køres.
 
 ### WebAPI
 Find WebAPI mappen (WebAPI) og start et python virtuelt enviornment og kør kommandoen ``fastapi dev main.py``<br>
